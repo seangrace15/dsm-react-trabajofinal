@@ -20,12 +20,13 @@ function Continuar(props) {
         let precio = props.precio;
         console.log(precio);
         for (let key in props.carrito) {
-            console.log(props.carrito[key])
-            pedido = pedido + props.carrito[key].id;
-            pedido = pedido + ' : ';
-            pedido = pedido + props.carrito[key].cantidad;
-            pedido = pedido + ', ';
-
+            if(props.carrito[key].cantidad != 0){
+                console.log(props.carrito[key])
+                pedido = pedido + props.carrito[key].id;
+                pedido = pedido + ' : ';
+                pedido = pedido + props.carrito[key].cantidad;
+                pedido = pedido + ', ';
+            }
         }
         console.log(pedido);
             axios.post("https://firestore.googleapis.com/v1/projects/dsm-trabajofinal-sgp/databases/(default)/documents/pedidos", 
